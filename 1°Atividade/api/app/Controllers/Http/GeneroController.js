@@ -3,6 +3,7 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+const Generos = use("App/Models/Genero")
 
 /**
  * Resourceful controller for interacting with generos
@@ -18,19 +19,10 @@ class GeneroController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const generos = await Genero.all();
+    return generos;
   }
 
-  /**
-   * Render a form to be used for creating a new genero.
-   * GET generos/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
 
   /**
    * Create/save a new genero.
@@ -55,17 +47,6 @@ class GeneroController {
   async show ({ params, request, response, view }) {
   }
 
-  /**
-   * Render a form to update an existing genero.
-   * GET generos/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
 
   /**
    * Update genero details.
