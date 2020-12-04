@@ -22,18 +22,7 @@ class FilmeController {
     return filmes;
   }
 
-  /**
-   * Render a form to be used for creating a new filme.
-   * GET filmes/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
-
+  
   /**
    * Create/save a new filme.
    * POST filmes
@@ -95,7 +84,9 @@ class FilmeController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-   
+    const filme = await Filme.findOrFail(params.id);
+    await filme.delete();
+    return filme;
   }
 }
 
