@@ -21,6 +21,12 @@ Route.get('/', () => {
 })
 
 
-Route.get("/generos", "GeneroController.index");
+
 Route.post("/register", "AuthController.register");
-Route.get("/authenticate", "AuthController.authenticate");
+Route.post("/authenticate", "AuthController.authenticate");
+
+Route.group(()=>{
+  Route.get("/generos", "GeneroController.index");
+  Route.resource("/filmes", "FilmeController.index");
+}).middleware(["auth"]);
+

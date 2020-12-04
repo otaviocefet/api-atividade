@@ -3,7 +3,7 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
-
+const Filme = use("App/Models/Filme")
 /**
  * Resourceful controller for interacting with filmes
  */
@@ -18,6 +18,8 @@ class FilmeController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const filmes = await Filme.all();
+    return filmes;
   }
 
   /**
