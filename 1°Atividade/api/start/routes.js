@@ -19,3 +19,8 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+
+Route.get("/generos", "GeneroController.index");
+Route.post("/register", "AuthController.register");
+Route.get("/authenticate", "AuthController.authenticate");

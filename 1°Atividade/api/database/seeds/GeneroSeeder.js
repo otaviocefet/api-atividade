@@ -1,5 +1,7 @@
 'use strict'
 
+const GeneroController = require('../../app/Controllers/Http/GeneroController');
+
 /*
 |--------------------------------------------------------------------------
 | GeneroSeeder
@@ -21,7 +23,8 @@ class GeneroSeeder {
       {tipo: "Comédia"},
       {tipo: "Terror"},
       {tipo: "Animação"},
-    ];
+    ]; 
+    await Genero.createMany(cursos);
   }
 }
 
