@@ -8,9 +8,9 @@ class FilmeSchema extends Schema {
     this.create('filmes', (table) => {
       table.increments()
       table.text("Texto")
-      table.integer("id user").unsigned().references("id").inTable("User").onUpdate("cascade").onDelete("cascade")
+      table.integer("id_user").unsigned().references("id").inTable("User").onUpdate("cascade").onDelete("cascade")
       .notNullable()
-      table.integer("id genero").unsigned().references("id").inTable("Genero").onUpdate("cascade").onDelete("cascade")
+      table.integer("id_genero").unsigned().references("id").inTable("Genero").onUpdate("cascade").onDelete("cascade")
       .notNullable()
       table.string("Imagem")
       table.timestamps()

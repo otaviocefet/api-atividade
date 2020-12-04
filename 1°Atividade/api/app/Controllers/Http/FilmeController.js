@@ -42,7 +42,10 @@ class FilmeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request }) {
+      const data = request.only(['Texto', 'id user', 'id genero', 'Imagem' ])
+      const filme = await Filme.create(data);
+      return filme;
   }
 
   /**
@@ -55,18 +58,8 @@ class FilmeController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-  }
-
-  /**
-   * Render a form to update an existing filme.
-   * GET filmes/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
+    const filme = await Filme.findOrFail(params.id)
+    return filme;
   }
 
   /**
@@ -78,6 +71,19 @@ class FilmeController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    const filme = await Filme.findOrFail(params.id)
+    const { Texto, id_user, id_genero, Imagem} = request.only([
+      "Texto",
+      "id_user",
+      "id_genero",
+      "Imagem",
+    ]);
+    filme.Texto = Texto;
+    filme.id_user = id_user;
+    filme.id_genero = id_genero;
+    filme.Imagem = Imagem;
+    filme.save()
+    return filme;
   }
 
   /**
@@ -89,6 +95,7 @@ class FilmeController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
+   
   }
 }
 
