@@ -27,6 +27,6 @@ Route.post("/authenticate", "AuthController.authenticate");
 
 Route.group(()=>{
   Route.get("/generos", "GeneroController.index");
-  Route.resource("/filmes", "FilmeController.index");
+  Route.resource("/filmes", "FilmeController").apiOnly();
 }).middleware(["auth"]);
 
